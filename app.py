@@ -15,5 +15,5 @@ if __name__ == "__main__":
         ssl_keyfile="./certs/private.key",
         ssl_certfile="./certs/certificate.crt"
     )
-server = uvicorn.Server(config)
-server.run()
+    server = uvicorn.Server(config)
+    server.run()
