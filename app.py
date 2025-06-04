@@ -7,6 +7,10 @@ app = FastAPI()
 async def read_root():
     return {"message": "Hola Mundo"}
 
+@app.get("/opendoor")
+async def open_door(door: str):
+    return {"action": f"Abriendo la puerta: {door}"}
+
 if __name__ == "__main__":
     config = uvicorn.Config(
         "app:app",
