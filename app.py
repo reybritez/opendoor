@@ -12,8 +12,6 @@ if __name__ == "__main__":
         "app:app",
         host="127.0.0.1",
         port=8000,
-        ssl_keyfile="./certs/private.key",
-        ssl_certfile="./certs/certificate.crt"
     )
     server = uvicorn.Server(config)
     server.run()
