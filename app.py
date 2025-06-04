@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
+import requests
 
 app = FastAPI()
 
@@ -9,6 +10,17 @@ async def read_root():
 
 @app.get("/opendoor")
 async def open_door(door: str):
+    if door == "gimnasio":
+        url = "http://192.168.1.163:8090/device/openDoorControl"
+        params = {
+            "data": "Open the door successfully",
+            "result": 1,
+            "pass": "12345678",
+            "sucess": "true"
+        }
+        response = requests.get(url, params=params)
+        return {"action": f"Abriendo la puerta del gimnasio", "status": response.status_code}
+    
     return {"action": f"Abriendo la puerta: {door}"}
 
 if __name__ == "__main__":
